@@ -50,7 +50,7 @@ sub _recv {
   my $data = $self->{socket}->getline();
   chomp $data;
 
-  my ($header, $version, $code, $desc, @rest) = split /\//, $data;
+  my ($header, $version, $code, $desc, @rest) = split '/', $data;
 
   die "Unexpected response: $data" unless $header eq 'SNP';
 
