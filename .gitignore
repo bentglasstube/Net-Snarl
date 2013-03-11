@@ -1,7 +1,2 @@
-MYMETA.*
-Makefile
-.*.swp
-blib
-pm_to_blib
-Net-Snarl-*.tar.gz
-Makefile.old
+Net-Snarl-*
+.build

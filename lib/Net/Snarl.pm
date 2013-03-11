@@ -1,7 +1,7 @@
 package Net::Snarl;
 
-use warnings;
 use strict;
+use warnings;
 
 use IO::Socket;
 use Carp;
@@ -10,13 +10,7 @@ use Carp;
 
 Net::Snarl - Snarl network protocol
 
-=head1 VERSION
-
-Version 0.05
-
 =cut
-
-our $VERSION = '0.05';
 
 use constant SNARL_PORT           => 9887;
 use constant SNARL_PROTO_VERSION  => '1.1';
