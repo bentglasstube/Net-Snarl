@@ -1,6 +1,9 @@
+## no critic
+package Net::Snarl;
+## use critic
+
 use strict;
 use warnings;
-package Net::Snarl;
 
 use IO::Socket;
 use Carp;
@@ -11,8 +14,9 @@ Net::Snarl - Snarl network protocol
 
 =cut
 
-use constant SNARL_PORT           => 9887;
-use constant SNARL_PROTO_VERSION  => '1.1';
+use Readonly;
+Readonly my $SNARL_PORT           => 9887;
+Readonly my $SNARL_PROTO_VERSION  => '1.1';
 
 =head1 SYNOPSIS
 
@@ -33,11 +37,11 @@ be running on the target machine.
 sub _send {
   my ($self, %param) = @_;
 
-  my $data = 'type=SNP#?version=' . Net::Snarl::SNARL_PROTO_VERSION . '#?' .
-    join('#?', map "$_=$param{$_}", keys %param);
+  my $data = 'type=SNP#?version=' . $SNARL_PROTO_VERSION . '#?' .
+    join('#?', map { "$_=$param{$_}" } keys %param);
 
   $self->{socket}->print("$data\x0d\x0a");
-  $self->_recv;
+  return $self->_recv;
 }
 
 sub _recv {
@@ -64,7 +68,7 @@ sub _recv {
 =head2 register($application, $host, $port)
 
 Connects to Snarl and register an application.  Host defaults to localhost and
-port defaults to C<Net::Snarl::SNARL_PORT>.
+port defaults to C<$Net::Snarl::SNARL_PORT>.
 
 =cut
 
@@ -76,7 +80,7 @@ sub register {
 
   my $socket = IO::Socket::INET->new(
     PeerAddr  => $host || 'localhost',
-    PeerPort  => $port || Net::Snarl::SNARL_PORT,
+    PeerPort  => $port || $SNARL_PORT,
     Proto     => 'tcp',
   ) or die "Unable to create socket: $!";
 
@@ -113,6 +117,8 @@ sub add_class {
   );
 
   die "Unable to add class: $text" if $result;
+
+  return 1;
 }
 
 =head2 notify($class, $title, $text, $timeout, $icon)
@@ -141,6 +147,8 @@ sub notify {
   );
 
   die "Unable to send notification: $rtext" if $result;
+
+  return 1;
 }
 
 sub DESTROY {
@@ -150,6 +158,8 @@ sub DESTROY {
     action  => 'unregister',
     app     => $self->{application},
   );
+
+  return;
 }
 
 =head1 BUGS
