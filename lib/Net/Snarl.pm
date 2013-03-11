@@ -1,7 +1,6 @@
-package Net::Snarl;
-
 use strict;
 use warnings;
+package Net::Snarl;
 
 use IO::Socket;
 use Carp;
