@@ -4,36 +4,29 @@ INSTALLATION
 
 To install this module, run the following commands:
 
-	perl Makefile.PL
-	make
-	make test
-	make install
+  perl Makefile.PL
+  make
+  make test
+  make install
 
 SUPPORT AND DOCUMENTATION
 
 After installing, you can find documentation for this module with the
 perldoc command.
 
-    perldoc Net::Snarl
+  perldoc Net::Snarl
 
 You can also look for information at:
 
-    RT, CPAN's request tracker
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Net-Snarl
+  Github repository for this module
+    http://github.com/bentglasstube/Net-Snarl
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Net-Snarl
-
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Net-Snarl
-
-    Search CPAN
-        http://search.cpan.org/dist/Net-Snarl/
-
+  MetaCPAN
+    https://metacpan.org/module/Net::Snarl
 
 LICENSE AND COPYRIGHT
 
-Copyright (C) 2010 Alan Berndt
+Copyright (C) 2013 Alan Berndt
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published
