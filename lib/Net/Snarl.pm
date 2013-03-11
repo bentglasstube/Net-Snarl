@@ -23,7 +23,7 @@ Readonly my $SNARL_PROTO_VERSION  => '1.1';
   use Net::Snarl;
 
   # connect to localhost and register Net::Snarl application
-  my $snarl = Net::Snarl->new('Net::Snarl');
+  my $snarl = Net::Snarl->register('Net::Snarl');
   $snarl->add_class('Test'); # add Test notification class
   $snarl->notify('Test', 'Hello', 'World', 5); # show hello world for 5 seconds
 
